@@ -44,3 +44,29 @@ awk -F";" 'NR==1 {h=$1", "$2", "$3} NR>1 {printf("INSERT INTO stepsData (%s) VAL
 # Z sql do csv
 (echo "dateTime;steps;synced"; sed -r 's/^INSERT .* VALUES \(//;s/\);$//;s/, /;/g' test.sql | sed -r 's/^([0-9]{10})[0-9]{3}/\1/') > sql2csv.csv
 ```
+
+### Zadanie 7 - Fotograf gamoń
+```bash
+# Rozpakowanie danych
+# Rozpakowanane pliki będą znajdować sie w katalogu kopie
+
+unzip kopie-1.zip -d kopie
+unzip kopie-2.zip -d kopie
+
+cd kopie
+
+# Rozpakowanie wszystkich zdjęć do katalogu razpakowane (jeśli nie istnieje to zostanie utworzony) 
+unzip '*.zip' -d ../rozpakowane 
+
+cd ..
+
+# Zmiana formatu z .png to .jpg
+magick mogrify -format jpg rozpakowane/*.png
+
+# Zmna rozdzielczośći i ustawienie wysokości
+# UWAGA - pliki zostaną nadpisane
+magick mogrify -resize x720 -density 96x96 rozpakowane/*.jpg 
+
+# Utworzenie archiwum
+zip archiwum2 rozpakowane/*.jpg
+```
