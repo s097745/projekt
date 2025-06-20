@@ -76,3 +76,16 @@ magick mogrify -resize x720 -density 96x96 rozpakowane/*.jpg
 # Utworzenie archiwum
 zip archiwum2 rozpakowane/*.jpg
 ```
+
+### Zadanie 8 - Wszędzie te PDF-y
+```bash
+# Wybranie 8 losowych zdjęc do portfolio
+cd rozpakowane
+ls | shuf | head -8 > ../portfolio
+
+#Przygotowanie strony
+magick montage -label %f portfolio/*.jpg -tile 2x4 -geometry 1235x870+5+5 -pointsize 20 portfolio.jpg
+
+# Sformatowanie do a4
+magick portfolio.jpg -density 300 -resize 2480x3508 -gravity center -extent 2480x3508 portfolio_a4.pdf
+```
