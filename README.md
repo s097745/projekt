@@ -89,3 +89,9 @@ magick montage -label %f portfolio/*.jpg -tile 2x4 -geometry 1235x870+5+5 -point
 # Sformatowanie do a4
 magick portfolio.jpg -density 300 -resize 2480x3508 -gravity center -extent 2480x3508 portfolio_a4.pdf
 ```
+
+### Zadanie 9 - Porządki w kopiach zapasowych
+```bash
+# Uruchomić skrypt kopie.sh
+./kopie.sh
+```
