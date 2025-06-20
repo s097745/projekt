@@ -95,3 +95,12 @@ magick portfolio.jpg -density 300 -resize 2480x3508 -gravity center -extent 2480
 # Uruchomić skrypt kopie.sh
 ./kopie.sh
 ```
+
+### Zadanie 9 - galeria dla grafika
+```bash
+# uruchomienie skrypt
+./galeria.sh
+
+# wstawienie zdjęć do podanego szablonu
+sed '/<!-- kolejne pliki galerii ... -->/r div.txt' galeria.html
+```
