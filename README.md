@@ -33,7 +33,7 @@ md5sum lista.txt
 md5sum lista-pop.txt 
 ```
 
-# Zadanie 5 - Z csv to sql i z powrotem
+### Zadanie 5 - Z csv to sql i z powrotem
 ```bash
 # Rozpakowanie katologu
 unzip csv.zip
@@ -43,6 +43,12 @@ awk -F";" 'NR==1 {h=$1", "$2", "$3} NR>1 {printf("INSERT INTO stepsData (%s) VAL
 
 # Z sql do csv
 (echo "dateTime;steps;synced"; sed -r 's/^INSERT .* VALUES \(//;s/\);$//;s/, /;/g' test.sql | sed -r 's/^([0-9]{10})[0-9]{3}/\1/') > sql2csv.csv
+```
+
+### Zadanie 6
+```bash
+# Skopiowanie lini i zakomentowanie pierwszej z nich
+sed -r 's/( ".*\,)/\/\/ \1\n \1/' en-7.2.json5 > pl-7.2.json5
 ```
 
 ### Zadanie 7 - Fotograf gamoń
