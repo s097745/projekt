@@ -11,7 +11,7 @@ dos2unix dane.txt
 echo -e "x\ty\tz" > dane3kol.txt && paste - - - < dane.txt >> dane3kol.txt 
 
 # Powrotna kowersja końca linii
-unix2dos 3kolumny.txt
+unix2dos dane3kol.txt
 ```
 
 ### Zadanie 4 - dodawanie poprawek
@@ -26,7 +26,7 @@ dos2unix lista.txt lista-pop.txt
 diff -u lista.txt lista-pop.txt > latka.patch
 
 # Zastosowanie łatki do oryginalnej listy
-patch lista.txt < latka.txt
+patch lista.txt < latka.patch
 
 # Sprawdzenie sumy kontrolnej
 md5sum lista.txt
@@ -42,7 +42,7 @@ unzip csv.zip
 awk -F";" 'NR==1 {h=$1", "$2", "$3} NR>1 {printf("INSERT INTO stepsData (%s) VALUES (%s, %s, %s);\n", h, $1, $2, $3)}' steps-2sql.csv > csv2sql.sql
 
 # Z sql do csv
-(echo "dateTime;steps;synced"; sed -r 's/^INSERT .* VALUES \(//;s/\);$//;s/, /;/g' test.sql | sed -r 's/^([0-9]{10})[0-9]{3}/\1/') > sql2csv.csv
+(echo "dateTime;steps;synced"; sed -r 's/^INSERT .* VALUES \(//;s/\);$//;s/, /;/g' steps-2csv.sql | sed -r 's/^([0-9]{10})[0-9]{3}/\1/') > sql2csv.csv
 ```
 
 ### Zadanie 6
